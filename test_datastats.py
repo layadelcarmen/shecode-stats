@@ -69,6 +69,12 @@ class TestStats(unittest.TestCase):
         assert ds._avg_age(self.test_data) == 56
 
 
+    def test__avg_salary(self):
+
+        ds = DataStats()
+        assert ds._avg_salary(self.test_data) == 57933     
+
+
         
 
 
