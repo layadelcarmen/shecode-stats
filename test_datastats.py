@@ -50,7 +50,7 @@ class TestStats(unittest.TestCase):
             }]
         }
 
-    def test_json(self):
+    def test_stats(self):
 
         ds = DataStats()
         ds_result = json.loads(ds.stats(self.test_data, 20, 20000))
