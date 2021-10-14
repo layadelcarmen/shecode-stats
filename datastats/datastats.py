@@ -29,7 +29,7 @@ class DataStats:
                       '€{}'.format(str(min(salaries)))]
 
         return {
-            'avg_age': math.floor(sum([e['age'] for e in data])/len(data)),
+            'avg_age': self._avg_age(data),
             'avg_salary': math.floor(sum(
                 [int(e['salary'][1:]) for e in data])/len(data)),
             'avg_yearly_increase': yearly_avg_increase,
@@ -41,4 +41,10 @@ class DataStats:
         return json.dumps(
             self._stats(data, iage, isalary)
         )
+
+    def _avg_age(self,data):
+
+        # Compute average
+        return math.floor(sum([e['age'] for e in data])/len(data))
+
 

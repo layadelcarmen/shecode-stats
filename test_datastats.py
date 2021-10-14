@@ -62,5 +62,14 @@ class TestStats(unittest.TestCase):
         ds = DataStats()
         self.assertDictEqual(ds._stats(self.test_data, 20, 20000), self.vr_data)
 
+    
+    def test__avg_age(self):
+
+        ds = DataStats()
+        assert ds._avg_age(self.test_data) == 56
+
+
+        
+
 
         
