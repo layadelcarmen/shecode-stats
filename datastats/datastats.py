@@ -8,15 +8,6 @@ class DataStats:
         # iage and isalary are the starting age and salary used to
         # compute the average yearly increase of salary.
 
-        # Compute average yearly increase
-        average_age_increase = math.floor(
-            sum([e['age'] for e in data])/len(data)) - iage
-        average_salary_increase = math.floor(
-            sum([int(e['salary'][1:]) for e in data])/len(data)) - isalary
-
-        yearly_avg_increase = math.floor(
-            average_salary_increase/average_age_increase)
-
         # Compute max salary
         salaries = [int(e['salary'][1:]) for e in data]
         threshold = '€' + str(max(salaries))
@@ -31,7 +22,7 @@ class DataStats:
         return {
             'avg_age': self._avg_age(data),
             'avg_salary': self._avg_salary(data) ,
-            'avg_yearly_increase': yearly_avg_increase,
+            'avg_yearly_increase': self._yearly_avg_increase(data, iage, isalary),
             'max_salary': max_salary,
             'min_salary': min_salary
         }
@@ -46,8 +37,21 @@ class DataStats:
         # Compute average
         return math.floor(sum([e['age'] for e in data])/len(data))
 
+
     def _avg_salary(self, data):
         return math.floor(sum([int(e['salary'][1:]) for e in data])/len(data))
+
+
+    def _yearly_avg_increase(self,data, iage, isalary):
+
+        # Compute average yearly increase
+
+        avg_salary_increase = self._avg_salary(data) -isalary
+
+        avg_age_increase = self._avg_age(data) - iage
+        
+        return math.floor(avg_salary_increase/avg_age_increase)       
+        
 
 
 
