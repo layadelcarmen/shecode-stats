@@ -87,6 +87,12 @@ class TestStats(unittest.TestCase):
         assert ds._max_salary(self.test_data) == self.vr_data['max_salary']
 
 
+    def test__min_salary(self):
+
+        ds = DataStats()
+        assert ds._min_salary(self.test_data) == self.vr_data['min_salary']        
+
+
         
 
 

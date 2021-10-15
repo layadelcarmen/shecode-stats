@@ -8,17 +8,12 @@ class DataStats:
         # iage and isalary are the starting age and salary used to
         # compute the average yearly increase of salary.
 
-        # Compute min salary
-        salaries = [int(d['salary'][1:]) for d in data]
-        min_salary = [e for e in data if e['salary'] ==
-                      '€{}'.format(str(min(salaries)))]
-
         return {
             'avg_age': self._avg_age(data),
             'avg_salary': self._avg_salary(data) ,
             'avg_yearly_increase': self._yearly_avg_increase(data, iage, isalary),
             'max_salary': self._max_salary(data),
-            'min_salary': min_salary
+            'min_salary': self._min_salary(data)
         }
 
     def stats(self, data, iage, isalary):
@@ -55,6 +50,15 @@ class DataStats:
 
         return [e for e in data if e['salary'] == threshold]          
         
+
+    def _min_salary(self, data):
+        """Compute min salary"""
+
+        salaries = [int(d['salary'][1:]) for d in data]
+        return [e for e in data if e['salary'] ==
+                      '€{}'.format(str(min(salaries)))]
+
+
 
 
 
