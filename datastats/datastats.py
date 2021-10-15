@@ -8,12 +8,6 @@ class DataStats:
         # iage and isalary are the starting age and salary used to
         # compute the average yearly increase of salary.
 
-        # Compute max salary
-        salaries = [int(e['salary'][1:]) for e in data]
-        threshold = '€' + str(max(salaries))
-
-        max_salary = [e for e in data if e['salary'] == threshold]
-
         # Compute min salary
         salaries = [int(d['salary'][1:]) for d in data]
         min_salary = [e for e in data if e['salary'] ==
@@ -23,7 +17,7 @@ class DataStats:
             'avg_age': self._avg_age(data),
             'avg_salary': self._avg_salary(data) ,
             'avg_yearly_increase': self._yearly_avg_increase(data, iage, isalary),
-            'max_salary': max_salary,
+            'max_salary': self._max_salary(data),
             'min_salary': min_salary
         }
 
@@ -33,7 +27,7 @@ class DataStats:
         )
 
     def _avg_age(self,data):
-
+        
         # Compute average
         return math.floor(sum([e['age'] for e in data])/len(data))
 
@@ -50,7 +44,16 @@ class DataStats:
 
         avg_age_increase = self._avg_age(data) - iage
         
-        return math.floor(avg_salary_increase/avg_age_increase)       
+        return math.floor(avg_salary_increase/avg_age_increase)
+
+
+    def _max_salary(self, data):
+        """Compute max salary"""
+
+        salaries = [int(e['salary'][1:]) for e in data]
+        threshold = '€' + str(max(salaries))
+
+        return [e for e in data if e['salary'] == threshold]          
         
 
 

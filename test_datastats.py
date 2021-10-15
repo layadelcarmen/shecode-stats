@@ -78,7 +78,13 @@ class TestStats(unittest.TestCase):
     def test__yearly_avg_increase(self):
 
         ds = DataStats()
-        assert ds._yearly_avg_increase(self.test_data,20, 20000) == 1053            
+        assert ds._yearly_avg_increase(self.test_data,20, 20000) == 1053  
+        
+        
+    def test__max_salary(self):
+
+        ds = DataStats()
+        assert ds._max_salary(self.test_data) == self.vr_data['max_salary']
 
 
         
