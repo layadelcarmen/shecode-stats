@@ -56,12 +56,6 @@ class TestStats(unittest.TestCase):
         ds_result = json.loads(ds.stats(self.test_data, 20, 20000))
         self.assertDictEqual(ds_result, self.vr_data)
 
-
-    def test__stats(self):
-        
-        ds = DataStats()
-        self.assertDictEqual(ds._stats(self.test_data, 20, 20000), self.vr_data)
-
     
     def test__avg_age(self):
 
