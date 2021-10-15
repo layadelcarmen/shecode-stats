@@ -21,10 +21,15 @@ class DataStats:
             self._stats(data, iage, isalary)
         )
 
+
+    def _ages(self,data):
+        return [d['age'] for d in data]
+
+
     def _avg_age(self,data):
-        
-        # Compute average
-        return math.floor(sum([e['age'] for e in data])/len(data))
+        """"Compute average"""
+
+        return math.floor(sum(self._ages(data))/len(data))
 
 
     def _avg_salary(self, data):
