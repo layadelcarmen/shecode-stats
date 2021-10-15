@@ -26,6 +26,10 @@ class DataStats:
         return [d['age'] for d in data]
 
 
+    def _salaries(self,data):
+        return [int(e['salary'][1:]) for e in data]
+
+
     def _avg_age(self,data):
         """"Compute average"""
 
@@ -33,7 +37,9 @@ class DataStats:
 
 
     def _avg_salary(self, data):
-        return math.floor(sum([int(e['salary'][1:]) for e in data])/len(data))
+        """"Compute salary average"""
+
+        return math.floor(sum(self._salaries(data))/len(data))
 
 
     def _yearly_avg_increase(self,data, iage, isalary):
